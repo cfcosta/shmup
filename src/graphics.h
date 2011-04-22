@@ -1,7 +1,4 @@
-#ifndef H_SDL
-    #define H_SDL
-    #include <SDL.h>
-#endif
+#include "common.h"
 
 SDL_Surface *display;
 int create_display();
