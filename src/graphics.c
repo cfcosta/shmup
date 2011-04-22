@@ -3,7 +3,7 @@
 SDL_Surface *display;
 int create_display()
 {
-    int flags = SDL_HWSURFACE | SDL_DOUBLEBUF;
+    Uint32 flags = SDL_HWSURFACE | SDL_DOUBLEBUF;
 
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         return 0;
