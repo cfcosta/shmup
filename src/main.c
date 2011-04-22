@@ -1,10 +1,8 @@
-#define SDL_main main
-
 #include <stdio.h>
 
 #include "graphics.h"
 
-int main (int argc, char const* argv[])
+int main (int argc, char ** argv)
 {
     if (!create_display()) {
       printf("Could not initialize the window.\n");
