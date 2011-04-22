@@ -8,6 +8,8 @@ AS_IF([test "x$ac_cv_prog_cc_c99" = "xno"], [
   AC_MSG_ERROR([no C99 compiler found.])
 ])
 
+AM_PROG_CC_C_O
+
 PKG_PROG_PKG_CONFIG
 PKG_CHECK_MODULES([SDL], [sdl])
 
