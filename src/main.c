@@ -4,7 +4,7 @@
 
 int main (int argc, char ** argv)
 {
-    const int frames_per_second = 60;
+    const int frames_per_second = 30;
     const int skip_frames = 1000 / frames_per_second;
     const int max_frameskip = 10;
 
