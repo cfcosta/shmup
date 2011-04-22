@@ -1,15 +1,18 @@
 #include <stdio.h>
 
+#include "common.h"
 #include "graphics.h"
 
 int main (int argc, char ** argv)
 {
     const int frames_per_second = 30;
     const int skip_frames = 1000 / frames_per_second;
-    const int max_frameskip = 10;
 
-    Uint32 next_game_frame = SDL_GetTick();
-    int loops = 0;
+    Uint32 next_game_frame;
+    Uint32 current_frame;
+
+    signal(SIGTERM, catch_signal);
+    signal(SIGINT, catch_signal);
 
     if (!create_display()) {
         printf("Could not initialize the window.\n");
@@ -19,12 +22,19 @@ int main (int argc, char ** argv)
 
     SDL_WM_SetCaption("SDL Shmup", "SDL Shmup");
 
-    while(1) {
-        while (SDL_GetTick() > next_game_frame && loops > max_frameskip) {
+    current_frame = SDL_GetTicks();
+    next_game_frame = current_frame;
 
-          next_game_frame += skip_frames;
-          loops++;
+    setbuf(stdout, NULL);
+
+    while(!quit) {
+        current_frame = SDL_GetTicks();
+
+        if (current_frame < next_game_frame) {
+            SDL_Delay(next_game_frame - current_frame);
         }
+
+        next_game_frame = (current_frame + skip_frames);
 
         update_display();
     }
