@@ -24,8 +24,6 @@ int main (int argc, char ** argv)
     current_frame = SDL_GetTicks();
     next_game_frame = current_frame;
 
-    setbuf(stdout, NULL);
-
     quit = 0;
     while(!quit) {
         update_input();
