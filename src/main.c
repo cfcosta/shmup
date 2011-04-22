@@ -1,5 +1,6 @@
 #include "common.h"
 #include "graphics.h"
+#include "input.h"
 
 int main (int argc, char ** argv)
 {
@@ -25,7 +26,10 @@ int main (int argc, char ** argv)
 
     setbuf(stdout, NULL);
 
+    quit = 0;
     while(!quit) {
+        update_input();
+
         current_frame = SDL_GetTicks();
 
         if (current_frame < next_game_frame) {
