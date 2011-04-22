@@ -9,7 +9,7 @@ int create_display()
         return 0;
     }
 
-    if (display = SDL_SetVideoMode(640, 480, 32, flags)) {
+    if ((display = SDL_SetVideoMode(640, 480, 32, flags)) != NULL) {
         return 1;
     }
 
