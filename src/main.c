@@ -12,9 +12,9 @@ int main (int argc, char ** argv)
     int loops = 0;
 
     if (!create_display()) {
-      printf("Could not initialize the window.\n");
-      printf("%s", SDL_GetError());
-      return 1;
+        printf("Could not initialize the window.\n");
+        printf("%s", SDL_GetError());
+        return 1;
     }
 
     SDL_WM_SetCaption("SDL Shmup", "SDL Shmup");
