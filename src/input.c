@@ -63,7 +63,7 @@ void handle_keyup(SDLKey key)
             if (move_y > 0) move_y = 0;
             break;
         case SDLK_LEFT:
-            if (move_x > 0) move_x = 0;
+            if (move_x < 0) move_x = 0;
             break;
         case SDLK_RIGHT:
             if (move_x > 0) move_x = 0;
