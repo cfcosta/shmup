@@ -3,19 +3,22 @@
 int create_display()
 {
     Uint32 flags = SDL_HWSURFACE | SDL_DOUBLEBUF;
+    SDL_Init(SDL_INIT_EVERYTHING);
 
-    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-        return 0;
-    }
+    display = SDL_SetVideoMode(640, 480, 32, flags);
 
-    if ((display = SDL_SetVideoMode(640, 480, 32, flags)) != NULL) {
-        return 1;
-    }
+    ship = IMG_Load("spaceship.png");
 
-    return 0;
+    ship_rect.x = 100;
+    ship_rect.y = 100;
+
+    SDL_Flip(display);
+
+    return 1;
 }
 
 void update_display()
 {
+    SDL_BlitSurface(ship, NULL, display, &ship_rect);
     SDL_Flip(display);
 }
