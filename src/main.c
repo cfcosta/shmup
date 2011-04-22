@@ -19,6 +19,8 @@ int main (int argc, char ** argv)
         return 1;
     }
 
+    setup_input();
+
     SDL_WM_SetCaption("SDL Shmup", "SDL Shmup");
 
     current_frame = SDL_GetTicks();
@@ -27,6 +29,7 @@ int main (int argc, char ** argv)
     quit = 0;
     while(!quit) {
         update_input();
+        update_display();
 
         current_frame = SDL_GetTicks();
 
@@ -35,8 +38,6 @@ int main (int argc, char ** argv)
         }
 
         next_game_frame = (current_frame + skip_frames);
-
-        update_display();
     }
 
     SDL_Quit();

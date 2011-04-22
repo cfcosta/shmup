@@ -6,17 +6,11 @@
 int quit;
 void catch_signal(int signal);
 
-int speed_up;
-int speed_down;
-int speed_left;
-int speed_right;
-
-int pressed_up;
-int pressed_down;
-int pressed_left;
-int pressed_right;
+int move_x;
+int move_y;
 
 SDL_Event event;
+void setup_input();
 void update_input();
 void handle_keypress(SDLKey key);
 void handle_keyup(SDLKey key);
