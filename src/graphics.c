@@ -1,6 +1,5 @@
 #include "graphics.h"
 
-SDL_Surface *display;
 int create_display()
 {
     Uint32 flags = SDL_HWSURFACE | SDL_DOUBLEBUF;
