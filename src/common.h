@@ -8,4 +8,6 @@
     {
         quit = 1;
     }
+    #include <stdio.h>
+    #include <SDL.h>
 #endif

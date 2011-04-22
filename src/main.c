@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 #include "common.h"
 #include "graphics.h"
 
