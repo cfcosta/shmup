@@ -19,6 +19,7 @@ int create_display()
 
 void update_display()
 {
+    SDL_FillRect(display, NULL, SDL_MapRGB(display->format, 0, 0, 0));
     SDL_BlitSurface(ship, NULL, display, &ship_rect);
     SDL_Flip(display);
 }
