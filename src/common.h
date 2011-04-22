@@ -3,5 +3,5 @@
 
     #include <stdio.h>
     #include <SDL.h>
-    #include <SDL/SDL_Image.h>
+    #include <SDL_Image.h>
 #endif
