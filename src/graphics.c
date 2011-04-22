@@ -15,3 +15,8 @@ int create_display()
 
     return 0;
 }
+
+void update_display()
+{
+    SDL_Flip(display);
+}

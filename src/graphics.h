@@ -4,3 +4,4 @@
 #endif
 
 int create_display();
+void update_display();

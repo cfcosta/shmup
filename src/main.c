@@ -10,6 +10,12 @@ int main (int argc, char ** argv)
       return 1;
     }
 
+    SDL_WM_SetCaption("SDL Shmup", "SDL Shmup");
+
+    while(1) {
+        update_display();
+    }
+
     SDL_Quit();
     return 0;
 }
