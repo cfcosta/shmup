@@ -26,8 +26,8 @@ void update_input()
         }
     }
 
-    ship_rect.x += move_x;
-    ship_rect.y += move_y;
+    ship->rect.x += move_x;
+    ship->rect.y += move_y;
 }
 
 void handle_keypress(SDLKey key)
