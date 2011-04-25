@@ -6,8 +6,15 @@ void catch_signal(int signal)
 }
 
 void setup_input() {
-    move_x = 0;
-    move_y = 0;
+  max_speed = 4;
+  accel_up = 0;
+  accel_down = 0;
+  accel_left = 0;
+  accel_right = 0;
+  speed_up = 0;
+  speed_down = 0;
+  speed_left = 0;
+  speed_right = 0;
 }
 
 void update_input()
@@ -26,8 +33,33 @@ void update_input()
         }
     }
 
-    ship->rect.x += move_x;
-    ship->rect.y += move_y;
+    speed_up--;
+    speed_down--;
+    speed_left--;
+    speed_right--;
+
+    if (pressed_up) accel_up = 2;
+    if (pressed_down) accel_down = 2;
+    if (pressed_left) accel_left = 2;
+    if (pressed_right) accel_right = 2;
+
+    speed_up += accel_up;
+    speed_down += accel_down;
+    speed_left += accel_left;
+    speed_right += accel_right;
+
+    if (speed_up > max_speed) speed_up = max_speed;
+    if (speed_down > max_speed) speed_down = max_speed;
+    if (speed_left > max_speed) speed_left = max_speed;
+    if (speed_right > max_speed) speed_right = max_speed;
+
+    if (speed_up < 0) speed_up = 0;
+    if (speed_down < 0) speed_down = 0;
+    if (speed_left < 0) speed_left = 0;
+    if (speed_right < 0) speed_right = 0;
+
+    ship->rect.x += (speed_right + (speed_left * -1));
+    ship->rect.y += (speed_down + (speed_up * -1));
 }
 
 void handle_keypress(SDLKey key)
@@ -37,16 +69,16 @@ void handle_keypress(SDLKey key)
             quit = true;
             break;
         case SDLK_UP:
-            move_y = -2;
+            pressed_up = true;
             break;
         case SDLK_DOWN:
-            move_y = 2;
+            pressed_down = true;
             break;
         case SDLK_LEFT:
-            move_x = -2;
+            pressed_left = true;
             break;
         case SDLK_RIGHT:
-            move_x = 2;
+            pressed_right = true;
             break;
         default:
             break;
@@ -57,16 +89,16 @@ void handle_keyup(SDLKey key)
 {
     switch(key) {
         case SDLK_UP:
-            if (move_y < 0) move_y = 0;
+            pressed_up = false;
             break;
         case SDLK_DOWN:
-            if (move_y > 0) move_y = 0;
+            pressed_down = false;
             break;
         case SDLK_LEFT:
-            if (move_x < 0) move_x = 0;
+            pressed_left = false;
             break;
         case SDLK_RIGHT:
-            if (move_x > 0) move_x = 0;
+            pressed_right = false;
             break;
         default:
             break;
