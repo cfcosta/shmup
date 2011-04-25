@@ -7,19 +7,25 @@ int create_display()
 
     display = SDL_SetVideoMode(640, 480, 32, flags);
 
-    ship = IMG_Load("spaceship.png");
-
-    ship_rect.x = 100;
-    ship_rect.y = 100;
-
-    SDL_Flip(display);
+    load_spaceship();
 
     return 1;
+}
+
+void load_spaceship()
+{
+    ship = malloc(sizeof(sprite));
+    ship->image = IMG_Load("spaceship.png");
+    ship->rect.x = 100;
+    ship->rect.y = 100;
+}
+
 }
 
 void update_display()
 {
     SDL_FillRect(display, NULL, SDL_MapRGB(display->format, 0, 0, 0));
-    SDL_BlitSurface(ship, NULL, display, &ship_rect);
+
+    SDL_BlitSurface(ship->image, NULL, display, &ship->rect);
     SDL_Flip(display);
 }
