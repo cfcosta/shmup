@@ -3,7 +3,7 @@
 
 #include <signal.h>
 
-int quit;
+bool quit;
 void catch_signal(int signal);
 
 int move_x;

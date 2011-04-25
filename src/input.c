@@ -2,7 +2,7 @@
 
 void catch_signal(int signal)
 {
-    quit = 1;
+    quit = true;
 }
 
 void setup_input() {
@@ -15,7 +15,7 @@ void update_input()
     if (SDL_PollEvent(&event)) {
         switch(event.type) {
             case SDL_QUIT:
-                quit = 1;
+                quit = true;
                 break;
             case SDL_KEYDOWN:
                 handle_keypress(event.key.keysym.sym);
@@ -34,7 +34,7 @@ void handle_keypress(SDLKey key)
 {
     switch(key) {
         case SDLK_ESCAPE:
-            quit = 1;
+            quit = true;
             break;
         case SDLK_UP:
             move_y = -2;
