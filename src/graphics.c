@@ -7,6 +7,7 @@ int create_display()
 
     display = SDL_SetVideoMode(640, 480, 32, flags);
 
+    load_background();
     load_spaceship();
 
     return 1;
@@ -20,12 +21,24 @@ void load_spaceship()
     ship->rect.y = 100;
 }
 
+void load_background()
+{
+    bg1 = malloc(sizeof(background));
+    bg1->image = IMG_Load("galaxy.png");
+    bg1->rect.x = 0;
+    bg1->rect.y = 0;
 }
 
 void update_display()
 {
     SDL_FillRect(display, NULL, SDL_MapRGB(display->format, 0, 0, 0));
+    update_background();
 
     SDL_BlitSurface(ship->image, NULL, display, &ship->rect);
     SDL_Flip(display);
+}
+
+void update_background()
+{
+    SDL_BlitSurface(bg1->image, NULL, display, &bg1->rect);
 }
