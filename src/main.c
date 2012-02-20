@@ -45,8 +45,6 @@ int main (int argc, char ** argv)
     teardown_input();
     teardown_display();
 
-    free(frame_count);
-
     SDL_Quit();
     return 0;
 }
