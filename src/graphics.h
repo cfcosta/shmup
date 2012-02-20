@@ -27,3 +27,6 @@ void load_spaceship();
 
 void update_display();
 void update_background();
+
+void teardown_display();
+#endif

@@ -23,6 +23,7 @@ int main (int argc, char ** argv)
 
     SDL_WM_SetCaption("SDL Shmup", "SDL Shmup");
 
+    frame_count = malloc(sizeof(int));
     current_frame = SDL_GetTicks();
     next_game_frame = current_frame;
 
@@ -37,10 +38,14 @@ int main (int argc, char ** argv)
             SDL_Delay(next_game_frame - current_frame);
         }
 
+        frame_count++;
         next_game_frame = (current_frame + skip_frames);
     }
 
     teardown_input();
+    teardown_display();
+
+    free(frame_count);
 
     SDL_Quit();
     return 0;
