@@ -23,6 +23,13 @@ void setup_input() {
   speed->right = 0;
 }
 
+void teardown_input(void)
+{
+  free(accel);
+  free(speed);
+  free(pressed_keys);
+}
+
 void update_input()
 {
     if (SDL_PollEvent(&event)) {

@@ -22,5 +22,6 @@ directions *pressed_keys;
 SDL_Event event;
 void setup_input();
 void update_input();
+void teardown_input();
 void handle_keypress(SDLKey key);
 void handle_keyup(SDLKey key);
