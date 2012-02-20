@@ -1,23 +1,20 @@
+#ifndef H_GRAPHICS
+#define H_GRAPHICS
+#include "input.h"
 #include "common.h"
 
 SDL_Surface *display;
 
-#ifndef S_SPRITE
-    #define S_SPRITE
-    typedef struct {
-        SDL_Surface *image;
-        SDL_Rect rect;
-    } sprite;
-#endif
+typedef struct {
+    SDL_Surface *image;
+    SDL_Rect rect;
+} sprite;
 
-#ifndef S_BACKGROUND
-    #define S_BACKGROUND
-    typedef struct {
-        int speed;
-        SDL_Surface *image;
-        SDL_Rect rect;
-    } background;
-#endif
+typedef struct {
+    int speed;
+    SDL_Surface *image;
+    SDL_Rect rect;
+} background;
 
 sprite *ship;
 
