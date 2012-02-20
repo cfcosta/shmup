@@ -10,6 +10,7 @@ void setup_input() {
 
   accel = malloc(sizeof(directions));
   speed = malloc(sizeof(directions));
+  pressed_keys = malloc(sizeof(directions));
 
   accel->up = 0;
   accel->down = 0;
@@ -43,10 +44,10 @@ void update_input()
     speed->left--;
     speed->right--;
 
-    if (pressed_up) accel->up = 2;
-    if (pressed_down) accel->down = 2;
-    if (pressed_left) accel->left = 2;
-    if (pressed_right) accel->right = 2;
+    if (pressed_keys->up) accel->up = 2;
+    if (pressed_keys->down) accel->down = 2;
+    if (pressed_keys->left) accel->left = 2;
+    if (pressed_keys->right) accel->right = 2;
 
     speed->up += accel->up;
     speed->down += accel->down;
@@ -74,16 +75,16 @@ void handle_keypress(SDLKey key)
             quit = true;
             break;
         case SDLK_UP:
-            pressed_up = true;
+            pressed_keys->up = true;
             break;
         case SDLK_DOWN:
-            pressed_down = true;
+            pressed_keys->down = true;
             break;
         case SDLK_LEFT:
-            pressed_left = true;
+            pressed_keys->left = true;
             break;
         case SDLK_RIGHT:
-            pressed_right = true;
+            pressed_keys->right = true;
             break;
         default:
             break;
@@ -94,16 +95,16 @@ void handle_keyup(SDLKey key)
 {
     switch(key) {
         case SDLK_UP:
-            pressed_up = false;
+            pressed_keys->up = false;
             break;
         case SDLK_DOWN:
-            pressed_down = false;
+            pressed_keys->down = false;
             break;
         case SDLK_LEFT:
-            pressed_left = false;
+            pressed_keys->left = false;
             break;
         case SDLK_RIGHT:
-            pressed_right = false;
+            pressed_keys->right = false;
             break;
         default:
             break;

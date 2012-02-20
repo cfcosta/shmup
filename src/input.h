@@ -6,11 +6,6 @@
 bool quit;
 void catch_signal(int signal);
 
-bool pressed_up;
-bool pressed_down;
-bool pressed_left;
-bool pressed_right;
-
 int max_speed;
 
 typedef struct {
@@ -22,6 +17,7 @@ typedef struct {
 
 directions *accel;
 directions *speed;
+directions *pressed_keys;
 
 SDL_Event event;
 void setup_input();
