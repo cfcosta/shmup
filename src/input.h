@@ -14,14 +14,14 @@ bool pressed_right;
 int max_speed;
 
 typedef struct {
-  int up;
-  int down;
-  int left;
-  int right;
-} movement;
+    int up;
+    int down;
+    int left;
+    int right;
+} directions;
 
-movement *accel;
-movement *speed;
+directions *accel;
+directions *speed;
 
 SDL_Event event;
 void setup_input();
