@@ -7,7 +7,7 @@ void catch_signal(int signal)
 
 void setup_input()
 {
-  max_speed = 4;
+  max_speed = 3;
 
   accel = malloc(sizeof(directions));
   speed = malloc(sizeof(directions));
