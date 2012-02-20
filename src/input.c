@@ -5,7 +5,8 @@ void catch_signal(int signal)
     quit = true;
 }
 
-void setup_input() {
+void setup_input()
+{
   max_speed = 4;
 
   accel = malloc(sizeof(directions));
