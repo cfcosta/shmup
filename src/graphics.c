@@ -41,8 +41,9 @@ void load_background()
     bg1->rect.y = 0;
 }
 
-void update_display()
+void update_ship()
 {
+    SDL_Rect *clip = malloc(sizeof(SDL_Rect));
     int ship_x, ship_y, ship_h;
 
     if (pressed_keys->left) {
@@ -66,19 +67,21 @@ void update_display()
         ship_h = 42;
     }
 
-    SDL_Rect *clip = malloc(sizeof(SDL_Rect));
     clip->x = ship_x;
     clip->y = ship_y;
     clip->w = 40;
     clip->h = ship_h;
 
+    SDL_BlitSurface(ship->image, clip, display, &ship->rect);
+}
+
+void update_display()
+{
     SDL_FillRect(display, NULL, SDL_MapRGB(display->format, 0, 0, 0));
     update_background();
+    update_ship();
 
-    SDL_BlitSurface(ship->image, clip, display, &ship->rect);
     SDL_Flip(display);
-
-    free(clip);
 }
 
 void update_background()
