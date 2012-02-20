@@ -7,14 +7,19 @@ void catch_signal(int signal)
 
 void setup_input() {
   max_speed = 4;
-  accel_up = 0;
-  accel_down = 0;
-  accel_left = 0;
-  accel_right = 0;
-  speed_up = 0;
-  speed_down = 0;
-  speed_left = 0;
-  speed_right = 0;
+
+  accel = malloc(sizeof(movement));
+  speed = malloc(sizeof(movement));
+
+  accel->up = 0;
+  accel->down = 0;
+  accel->left = 0;
+  accel->right = 0;
+
+  speed->up = 0;
+  speed->down = 0;
+  speed->left = 0;
+  speed->right = 0;
 }
 
 void update_input()
@@ -33,33 +38,33 @@ void update_input()
         }
     }
 
-    speed_up--;
-    speed_down--;
-    speed_left--;
-    speed_right--;
+    speed->up--;
+    speed->down--;
+    speed->left--;
+    speed->right--;
 
-    if (pressed_up) accel_up = 2;
-    if (pressed_down) accel_down = 2;
-    if (pressed_left) accel_left = 2;
-    if (pressed_right) accel_right = 2;
+    if (pressed_up) accel->up = 2;
+    if (pressed_down) accel->down = 2;
+    if (pressed_left) accel->left = 2;
+    if (pressed_right) accel->right = 2;
 
-    speed_up += accel_up;
-    speed_down += accel_down;
-    speed_left += accel_left;
-    speed_right += accel_right;
+    speed->up += accel->up;
+    speed->down += accel->down;
+    speed->left += accel->left;
+    speed->right += accel->right;
 
-    if (speed_up > max_speed) speed_up = max_speed;
-    if (speed_down > max_speed) speed_down = max_speed;
-    if (speed_left > max_speed) speed_left = max_speed;
-    if (speed_right > max_speed) speed_right = max_speed;
+    if (speed->up > max_speed) speed->up = max_speed;
+    if (speed->down > max_speed) speed->down = max_speed;
+    if (speed->left > max_speed) speed->left = max_speed;
+    if (speed->right > max_speed) speed->right = max_speed;
 
-    if (speed_up < 0) speed_up = 0;
-    if (speed_down < 0) speed_down = 0;
-    if (speed_left < 0) speed_left = 0;
-    if (speed_right < 0) speed_right = 0;
+    if (speed->up < 0) speed->up = 0;
+    if (speed->down < 0) speed->down = 0;
+    if (speed->left < 0) speed->left = 0;
+    if (speed->right < 0) speed->right = 0;
 
-    ship->rect.x += (speed_right + (speed_left * -1));
-    ship->rect.y += (speed_down + (speed_up * -1));
+    ship->rect.x += (speed->right + (speed->left * -1));
+    ship->rect.y += (speed->down + (speed->up * -1));
 }
 
 void handle_keypress(SDLKey key)

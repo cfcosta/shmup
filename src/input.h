@@ -12,14 +12,16 @@ bool pressed_left;
 bool pressed_right;
 
 int max_speed;
-int accel_up;
-int accel_down;
-int accel_left;
-int accel_right;
-int speed_up;
-int speed_down;
-int speed_left;
-int speed_right;
+
+typedef struct {
+  int up;
+  int down;
+  int left;
+  int right;
+} movement;
+
+movement *accel;
+movement *speed;
 
 SDL_Event event;
 void setup_input();
