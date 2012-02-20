@@ -40,6 +40,8 @@ int main (int argc, char ** argv)
         next_game_frame = (current_frame + skip_frames);
     }
 
+    teardown_input();
+
     SDL_Quit();
     return 0;
 }

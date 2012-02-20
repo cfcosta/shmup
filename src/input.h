@@ -1,3 +1,6 @@
+#ifndef H_INPUT
+#define H_INPUT
+
 #include "common.h"
 #include "graphics.h"
 
@@ -17,7 +20,15 @@ typedef struct {
 
 directions *accel;
 directions *speed;
-directions *pressed_keys;
+
+typedef struct {
+    bool up;
+    bool down;
+    bool left;
+    bool right;
+} keys;
+
+keys *pressed_keys;
 
 SDL_Event event;
 void setup_input();
@@ -25,3 +36,4 @@ void update_input();
 void teardown_input();
 void handle_keypress(SDLKey key);
 void handle_keyup(SDLKey key);
+#endif
