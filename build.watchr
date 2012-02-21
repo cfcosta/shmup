@@ -1,3 +1,2 @@
-watch('src/(.*)\.[ch]') do
-  system("make")
-end
+watch('src/(.*)\.[ch]') { system("make") }
+watch('.*Makefile.am') { system("./bootstrap.sh") }
