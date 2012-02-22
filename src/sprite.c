@@ -1,4 +1,4 @@
-#include "animation.h"
+#include "sprite.h"
 
 sprite *load_sprite(char *filename, int width, int height, int x, int y, int frame_count)
 {

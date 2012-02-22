@@ -3,7 +3,7 @@
 
 #include "common.h"
 #include "input.h"
-#include "animation.h"
+#include "sprite.h"
 
 SDL_Surface *display;
 
