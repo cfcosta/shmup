@@ -31,7 +31,7 @@ void update_sprite(sprite *spr)
         spr->current_frame++;
     } else {
         spr->clip_rect.x = spr->start_position;
-        spr->current_frame = 0;
+        spr->current_frame = 1;
     }
 
     SDL_BlitSurface(spr->image, &spr->clip_rect, display, &spr->rect);
