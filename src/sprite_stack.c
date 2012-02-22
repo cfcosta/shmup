@@ -1,5 +1,12 @@
 #include "sprite_stack.h"
 
+sprite_node *create_node(sprite *spr) {
+    sprite_node *sprn = malloc(sizeof(sprite_node));
+    sprn->sprite = spr;
+
+    return sprn;
+}
+
 void stack_remove(sprite_node *node)
 {
     if (node->previous == NULL) {

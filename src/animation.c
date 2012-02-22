@@ -1,6 +1,6 @@
 #include "animation.h"
 
-sprite * load_sprite(char *filename, int width, int height, int x, int y, int frame_count)
+sprite *load_sprite(char *filename, int width, int height, int x, int y, int frame_count)
 {
     sprite *result = malloc(sizeof(sprite));
     result->image = IMG_Load(filename);

@@ -26,7 +26,7 @@ void teardown_display()
 void load_spaceship()
 {
     ship = load_sprite("sprite.png", 42, 42, 100, 100, 3);
-    first_sprite = ship;
+    first_sprite = create_node(ship);
 }
 
 void load_background()
