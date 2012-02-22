@@ -27,6 +27,8 @@ void update_sprite(sprite *spr)
         spr->rect.x = spr->start_position;
         spr->current_frame = 0;
     }
+
+    SDL_BlitSurface(spr->image, NULL, display, &spr->rect);
 }
 
 void teardown_sprite(sprite *spr)
@@ -38,6 +40,14 @@ void teardown_sprite(sprite *spr)
 sprite_node *create_node(sprite *spr) {
     sprite_node *sprn = malloc(sizeof(sprite_node));
     sprn->sprite = spr;
+    sprn->previous = NULL;
+    sprn->next = NULL;
+
+    if (last_sprite) {
+        stack_push(sprn);
+    } else {
+        last_sprite = sprn;
+    }
 
     return sprn;
 }
@@ -64,5 +74,6 @@ void stack_push(sprite_node *node)
 {
     last_sprite->next = node;
     node->previous = last_sprite;
+    node->next = NULL;
     last_sprite = node;
 }

@@ -5,8 +5,6 @@
 #include "input.h"
 #include "sprite.h"
 
-SDL_Surface *display;
-
 typedef struct {
     int speed;
     SDL_Surface *image;

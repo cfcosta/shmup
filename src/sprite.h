@@ -29,3 +29,4 @@ sprite_node *create_node(sprite *spr);
 void stack_remove(sprite_node *node);
 void stack_push(sprite_node *node);
 #endif
+

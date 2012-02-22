@@ -15,12 +15,10 @@ int create_display()
 
 void teardown_display()
 {
-    SDL_FreeSurface(ship->image);
-    SDL_FreeSurface(bg1->image);
+    teardown_sprite(ship);
 
-    free(ship);
+    SDL_FreeSurface(bg1->image);
     free(bg1);
-    free(bg2);
 }
 
 void load_spaceship()
@@ -37,50 +35,23 @@ void load_background()
     bg1->rect.y = 0;
 }
 
-void update_ship()
-{
-    SDL_Rect *clip = malloc(sizeof(SDL_Rect));
-    int ship_x, ship_y, ship_h;
-
-    if (pressed_keys->left) {
-        ship_x = 0;
-    } else if (pressed_keys->right) {
-        ship_x = 82;
-    } else {
-        ship_x = 40;
-    }
-
-    if (pressed_keys->up) {
-        if (*frame_count % 2 == 0) {
-            ship_y = 40;
-            ship_h = 46;
-        } else {
-            ship_y = 86;
-            ship_h = 46;
-        }
-    } else {
-        ship_y = 0;
-        ship_h = 42;
-    }
-
-    clip->x = ship_x;
-    clip->y = ship_y;
-    clip->w = 40;
-    clip->h = ship_h;
-
-    SDL_BlitSurface(ship->image, clip, display, &ship->rect);
-}
-
-void update_display()
-{
-    SDL_FillRect(display, NULL, SDL_MapRGB(display->format, 0, 0, 0));
-    update_background();
-    update_ship();
-
-    SDL_Flip(display);
-}
-
 void update_background()
 {
     SDL_BlitSurface(bg1->image, NULL, display, &bg1->rect);
 }
+
+void update_display()
+{
+    sprite_node *current = first_sprite;
+
+    SDL_FillRect(display, NULL, SDL_MapRGB(display->format, 0, 0, 0));
+    update_background();
+
+    while(current) {
+        update_sprite(current->sprite);
+        current = current->next;
+    }
+
+    SDL_Flip(display);
+}
+
