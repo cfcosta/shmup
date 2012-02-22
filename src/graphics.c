@@ -5,7 +5,7 @@ int create_display()
     Uint32 flags = SDL_HWSURFACE | SDL_DOUBLEBUF;
     SDL_Init(SDL_INIT_EVERYTHING);
 
-    display = SDL_SetVideoMode(640, 480, 32, flags);
+    display = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, flags);
 
     load_background();
     load_spaceship();
@@ -47,10 +47,9 @@ void update_display()
     SDL_FillRect(display, NULL, SDL_MapRGB(display->format, 0, 0, 0));
     update_background();
 
-    while(current) {
+    do {
         update_sprite(current->sprite);
-        current = current->next;
-    }
+    } while((current = current->next));
 
     SDL_Flip(display);
 }

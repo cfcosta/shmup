@@ -6,6 +6,7 @@
 typedef struct s_sprite {
     SDL_Surface *image;
     SDL_Rect rect;
+    SDL_Rect clip_rect;
 
     int current_frame;
     int frame_count;

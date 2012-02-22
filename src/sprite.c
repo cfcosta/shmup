@@ -8,12 +8,15 @@ sprite *load_sprite(char *filename, int width, int height, int x, int y, int fra
     result->current_frame = 0;
     result->frame_count = frame_count;
 
-    result->rect.w = width;
-    result->rect.h = height;
-
-    result->start_position = x;
     result->rect.x = x;
     result->rect.y = y;
+    result->rect.w = SCREEN_WIDTH;
+    result->rect.h = SCREEN_HEIGHT;
+
+    result->clip_rect.w = width;
+    result->clip_rect.h = height;
+
+    result->start_position = x;
 
     return result;
 }
