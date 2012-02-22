@@ -1,9 +1,9 @@
 #ifndef H_GRAPHICS
 #define H_GRAPHICS
-#include "input.h"
-#include "common.h"
 
-#include "sprite_stack.h"
+#include "common.h"
+#include "input.h"
+#include "animation.h"
 
 SDL_Surface *display;
 
