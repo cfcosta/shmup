@@ -3,11 +3,18 @@
 #include "input.h"
 #include "common.h"
 
+#include "sprite_stack.h"
+#include "animation.h"
+
 SDL_Surface *display;
 
-typedef struct {
+typedef struct s_sprite {
     SDL_Surface *image;
     SDL_Rect rect;
+
+    int current_frame;
+    int frame_count;
+    int start_position;
 } sprite;
 
 typedef struct {

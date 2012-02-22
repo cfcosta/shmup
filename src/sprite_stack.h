@@ -3,15 +3,14 @@
 
 #include "graphics.h"
 
-struct sprite_node {
+typedef struct s_sprite_node {
     sprite *sprite;
-    struct sprite_node *previous;
-    struct sprite_node *next;
-};
-typedef struct sprite_node sprite_node;
+    s_sprite_node *previous;
+    s_sprite_node *next;
+} sprite_node;
 
-sprite_node *first;
-sprite_node *last;
+sprite_node *first_sprite;
+sprite_node *last_sprite;
 
 void stack_remove(sprite_node *node);
 void stack_push(sprite_node *node);

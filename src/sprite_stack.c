@@ -3,13 +3,13 @@
 void stack_remove(sprite_node *node)
 {
     if (node->previous == NULL) {
-        first = node->next;
+        first_sprite = node->next;
     } else {
         node->previous->next = node->next;
     }
 
     if (node->next == NULL) {
-        last = node->previous;
+        last_sprite = node->previous;
     } else {
         node->next->previous = node->previous;
     }
@@ -20,7 +20,7 @@ void stack_remove(sprite_node *node)
 
 void stack_push(sprite_node *node)
 {
-    last->next = node;
-    node->previous = last;
-    last = node;
+    last_sprite->next = node;
+    node->previous = last_sprite;
+    last_sprite = node;
 }

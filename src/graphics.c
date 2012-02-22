@@ -17,7 +17,6 @@ void teardown_display()
 {
     SDL_FreeSurface(ship->image);
     SDL_FreeSurface(bg1->image);
-    /*SDL_FreeSurface(bg2->image);*/
 
     free(ship);
     free(bg1);
@@ -26,11 +25,8 @@ void teardown_display()
 
 void load_spaceship()
 {
-    ship = malloc(sizeof(sprite));
-    ship->image = IMG_Load("sprite.png");
-
-    ship->rect.x = 100;
-    ship->rect.y = 100;
+    ship = load_sprite("sprite.png", 42, 42, 100, 100, 3);
+    first_sprite = ship;
 }
 
 void load_background()
