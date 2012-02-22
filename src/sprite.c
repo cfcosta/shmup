@@ -21,17 +21,22 @@ sprite *load_sprite(char *filename, int width, int height, int x, int y, int fra
     return result;
 }
 
+void move_sprite(sprite *spr, int x, int y) {
+    spr->rect.x = x;
+    spr->rect.y = y;
+}
+
 void update_sprite(sprite *spr)
 {
     if (spr->current_frame < spr->frame_count) {
-        spr->rect.x = (spr->rect.x + spr->rect.w);
+        spr->clip_rect.x = (spr->clip_rect.x + spr->clip_rect.w);
         spr->current_frame++;
     } else {
-        spr->rect.x = spr->start_position;
+        spr->clip_rect.x = spr->start_position;
         spr->current_frame = 0;
     }
 
-    SDL_BlitSurface(spr->image, NULL, display, &spr->rect);
+    SDL_BlitSurface(spr->image, &spr->clip_rect, display, &spr->rect);
 }
 
 void teardown_sprite(sprite *spr)

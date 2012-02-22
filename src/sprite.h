@@ -20,6 +20,7 @@ typedef struct s_sprite_node {
 } sprite_node;
 
 sprite *load_sprite(char *filename, int width, int height, int x, int y, int frame_count);
+void move_sprite(sprite *spr, int x, int y);
 void update_sprite(sprite *spr);
 void teardown_sprite(sprite *spr);
 

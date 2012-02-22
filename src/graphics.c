@@ -23,7 +23,8 @@ void teardown_display()
 
 void load_spaceship()
 {
-    ship = load_sprite("sprite.png", 42, 42, 100, 100, 3);
+    ship = load_sprite("sprite.png", 40, 40, 0, 0, 3);
+    move_sprite(ship, 100, 100);
     first_sprite = create_node(ship);
 }
 
