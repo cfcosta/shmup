@@ -23,7 +23,7 @@ void teardown_display()
 
 void load_spaceship()
 {
-    ship = load_sprite("sprite.png", 40, 40, 0, 0, 3);
+    ship = load_sprite("sprite.png", 48, 48, 0, 0, 3);
     move_sprite(ship, 100, 100);
     first_sprite = create_node(ship);
 }
@@ -36,17 +36,21 @@ void load_background()
     bg1->rect.y = 0;
 }
 
-void update_background()
-{
-    SDL_BlitSurface(bg1->image, NULL, display, &bg1->rect);
-}
-
 void update_display()
 {
     sprite_node *current = first_sprite;
 
     SDL_FillRect(display, NULL, SDL_MapRGB(display->format, 0, 0, 0));
-    update_background();
+    SDL_BlitSurface(bg1->image, NULL, display, &bg1->rect);
+
+    int tile_size = 48;
+    if (pressed_keys->right) {
+        ship->clip_rect.y = pressed_keys->up ? tile_size * 3 : tile_size;
+    } else if (pressed_keys->left) {
+        ship->clip_rect.y = pressed_keys->up ? tile_size * 4 : tile_size * 2;
+    } else {
+        ship->clip_rect.y = pressed_keys->up ? tile_size * 5 : 0;
+    }
 
     do {
         update_sprite(current->sprite);
