@@ -1,19 +1,8 @@
-# Autoconf
-aclocal.m4
-autom4te.cache
-config.log
-config.status
-configure
-install-sh
-missing
-
-# Automake
-Makefile.in
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
 Makefile
-
-# ./configure and make
-*.o
-.deps
-depcomp
-src/shmup
-compile
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+compile_commands.json
