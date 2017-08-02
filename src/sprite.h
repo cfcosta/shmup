@@ -1,5 +1,4 @@
-#ifndef H_ANIMATION
-#define H_ANIMATION
+#pragma once
 
 #include "common.h"
 
@@ -31,4 +30,3 @@ sprite_node *last_sprite;
 sprite_node *create_node(sprite *spr);
 void stack_remove(sprite_node *node);
 void stack_push(sprite_node *node);
-#endif

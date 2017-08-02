@@ -1,5 +1,4 @@
-#ifndef H_COMMON
-#define H_COMMON
+#pragma once
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
@@ -22,4 +21,3 @@ typedef int_fast64_t i64;
 
 SDL_Surface *display;
 u32 *frame_count;
-#endif

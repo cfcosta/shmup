@@ -1,5 +1,4 @@
-#ifndef H_GRAPHICS
-#define H_GRAPHICS
+#pragma once
 
 #include "common.h"
 #include "input.h"
@@ -24,4 +23,3 @@ void update_display();
 void update_background();
 
 void teardown_display();
-#endif

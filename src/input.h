@@ -1,5 +1,4 @@
-#ifndef H_INPUT
-#define H_INPUT
+#pragma once
 
 #include "common.h"
 #include "graphics.h"
@@ -36,4 +35,3 @@ void update_input();
 void teardown_input();
 void handle_keypress(SDLKey key);
 void handle_keyup(SDLKey key);
-#endif
