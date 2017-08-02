@@ -1,7 +1,7 @@
 #include "graphics.h"
 
 int create_display() {
-  Uint32 flags = SDL_HWSURFACE | SDL_DOUBLEBUF;
+  u32 flags = SDL_HWSURFACE | SDL_DOUBLEBUF;
   SDL_Init(SDL_INIT_EVERYTHING);
 
   display = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, flags);
@@ -38,7 +38,7 @@ void update_display() {
   SDL_FillRect(display, NULL, SDL_MapRGB(display->format, 0, 0, 0));
   SDL_BlitSurface(bg1->image, NULL, display, &bg1->rect);
 
-  int tile_size = 48;
+  i8 tile_size = 48;
   if (pressed_keys->right) {
     ship->clip_rect.y = pressed_keys->up ? tile_size * 3 : tile_size;
   } else if (pressed_keys->left) {

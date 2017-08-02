@@ -9,23 +9,23 @@
 bool quit;
 void catch_signal(int signal);
 
-int max_speed;
+u8 max_speed;
 
 typedef struct {
-    int up;
-    int down;
-    int left;
-    int right;
+  u8 up;
+  u8 down;
+  u8 left;
+  u8 right;
 } directions;
 
 directions *accel;
 directions *speed;
 
 typedef struct {
-    bool up;
-    bool down;
-    bool left;
-    bool right;
+  bool up;
+  bool down;
+  bool left;
+  bool right;
 } keys;
 
 keys *pressed_keys;

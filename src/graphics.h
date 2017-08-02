@@ -6,9 +6,9 @@
 #include "sprite.h"
 
 typedef struct {
-    int speed;
-    SDL_Surface *image;
-    SDL_Rect rect;
+  i8 speed;
+  SDL_Surface *image;
+  SDL_Rect rect;
 } background;
 
 sprite *ship;
