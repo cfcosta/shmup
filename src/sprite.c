@@ -19,7 +19,7 @@ sprite *load_sprite(char *filename, u16 width, u16 height, u16 x, u16 y,
   return result;
 }
 
-void move_sprite(sprite *spr, u16 x, u16 y) {
+void move_sprite(sprite *spr, i16 x, i16 y) {
   spr->rect.x = x;
   spr->rect.y = y;
 }

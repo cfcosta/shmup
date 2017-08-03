@@ -1,7 +1,7 @@
 #include "graphics.h"
 
 int create_display() {
-  u32 flags = SDL_HWSURFACE | SDL_DOUBLEBUF;
+  u32 flags = SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN;
   SDL_Init(SDL_INIT_EVERYTHING);
 
   display = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, flags);
@@ -25,6 +25,17 @@ void load_spaceship() {
   first_sprite = create_node(ship);
 }
 
+void update_spaceship() {
+  i8 tile_size = 48;
+  if (pressed_keys->right) {
+    ship->clip_rect.y = pressed_keys->up ? tile_size * 3 : tile_size;
+  } else if (pressed_keys->left) {
+    ship->clip_rect.y = pressed_keys->up ? tile_size * 4 : tile_size * 2;
+  } else {
+    ship->clip_rect.y = pressed_keys->up ? tile_size * 5 : 0;
+  }
+}
+
 void load_background() {
   bg1 = malloc(sizeof(background));
   bg1->image = IMG_Load("resources/galaxy.png");
@@ -38,14 +49,7 @@ void update_display() {
   SDL_FillRect(display, NULL, SDL_MapRGB(display->format, 0, 0, 0));
   SDL_BlitSurface(bg1->image, NULL, display, &bg1->rect);
 
-  i8 tile_size = 48;
-  if (pressed_keys->right) {
-    ship->clip_rect.y = pressed_keys->up ? tile_size * 3 : tile_size;
-  } else if (pressed_keys->left) {
-    ship->clip_rect.y = pressed_keys->up ? tile_size * 4 : tile_size * 2;
-  } else {
-    ship->clip_rect.y = pressed_keys->up ? tile_size * 5 : 0;
-  }
+  update_spaceship();
 
   do {
     update_sprite(current->sprite);
