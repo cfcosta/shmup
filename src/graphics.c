@@ -1,7 +1,7 @@
 #include "graphics.h"
 
 int create_display() {
-  u32 flags = SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN;
+  u32 flags = SDL_HWSURFACE | SDL_DOUBLEBUF;
   SDL_Init(SDL_INIT_EVERYTHING);
 
   display = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, flags);
