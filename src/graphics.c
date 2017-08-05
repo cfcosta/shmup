@@ -12,6 +12,8 @@ int create_display() {
   return 1;
 }
 
+void toggle_fullscreen() { SDL_WM_ToggleFullScreen(display); }
+
 void teardown_display() {
   teardown_sprite(ship);
 

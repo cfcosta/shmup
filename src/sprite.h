@@ -18,6 +18,8 @@ typedef struct s_sprite_node {
   struct s_sprite_node *next;
 } sprite_node;
 
+sprite *ship;
+
 sprite *load_sprite(char *filename, u16 width, u16 height, u16 x, u16 y,
                     u8 frame_count);
 void move_sprite(sprite *spr, i16 x, i16 y);
